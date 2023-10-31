@@ -76,7 +76,7 @@ In order to use the Amazon S3 service, you must authenticate with AWS. To do so,
     | **TemporaryCredentials** | **Profile ARN** | ARN of the profile [created in IAM Roles Anywhere](/appstore/connectors/aws/aws-authentication/#prerequisites) |
     | **TemporaryCredentials** | **Trust Anchor ARN** | ARN of the trust anchor [created in IAM Roles Anywhere](/appstore/connectors/aws/aws-authentication/#prerequisites) |
     | **TemporaryCredentials** | **Client Certificate Identifier** | The **Client Certificate Pin** visible in the **Outgoing Certificates** section on the **Network** tab in the Mendix Cloud environment |
-    | **TemporaryCredentials** | **Duration** | Duration for which the session token should be valid; after the duration passes, the validity of the temporary credentials expires |
+    | **TemporaryCredentials** | **Duration** | Duration for which the temporary token should be valid; after the duration passes, the validity of the temporary credentials expires |
     | **TemporaryCredentials** | **Session Name** | An identifier for the session |
 
 ### 3.2 Configuring a Microflow for an AWS Service
@@ -87,7 +87,7 @@ After you configure the authentication profile for Amazon S3, you can implement 
 2. Enter a name for your microflow, for example, *DS_CreateBucket*, and then click **OK**.
 3. In the **App Explorer**, in the **AmazonS3Connector** > **Operations** section, find the **CreateBucket** activity.
 4. Drag the **CreateBucket** activity onto the microflow you are working on.
-5. Double-click the **CreateBucket** activity and configure the **AWS_Region** parameter by doing the following steps:
+5. Double-click the **CreateBucket** activity and configure the **ENUM_Region** parameter by doing the following steps:
     1. Click **Edit parameter value**, edit the **ENUM_Region** parameter, and change **Type** to **Expression**.
     2. In the expression builder, type `ENUM_Region`, and then press **Ctrl+Space**.
     3. In the autocomplete dialog, select **AWSAuthentication.ENUM_Region**, then type *.* and select your AWS region from the list.
@@ -126,7 +126,7 @@ To help you work with the Amazon S3 connector, the following sections of this do
 
 The domain model is a data model that describes the information in your application domain in an abstract way. For more information, see [Domain Model](/refguide/domain-model/).
 
-The entities in the table below describe all generalizations. These are reused by the different models for the specific microflow activities or for storing connection details.
+The entities in the table below describe all generalizations.
 
 #### 4.1.1 S3Object {#s3object}
 
@@ -270,72 +270,72 @@ Activities define the actions that are executed in a microflow or a nanoflow. Fo
 
 #### 4.3.1 CreateBucket {#createbucket}
 
-The `CreateBucket` Amazon S3 action allows you to create a new S3 Bucket. It requires a valid `AWS_Region` and `Credentials`, as well as a `CreateBucketRequest` object. It returns a `CreateBucketResponse` object. The input and output for this service are shown in the table below: 
+The `CreateBucket` Amazon S3 action allows you to create a new S3 Bucket. It requires a valid `ENUM_Region` and `Credentials`, as well as a `CreateBucketRequest` object. It returns a `CreateBucketResponse` object. The input and output for this service are shown in the table below: 
 
 | Input | Output | 
 | --- | --- | 
-| `CreateBucketRequest`, `AWS_Region`, `Credentials` | `CreateBucketResponse` |
+| `CreateBucketRequest`, `ENUM_Region`, `Credentials` | `CreateBucketResponse` |
 
 #### 4.3.2 PutObject {#putobject}
 
-The `PutObject` Amazon S3 actions allows you put an object into a specified S3 bucket. It requires a valid `AWS_Region` and `Credentials`, as well as a `PutObjectRequest` object and a `FileDocument` object. It returns a Boolean which indicates if the action was successful. The input and output for this service are shown in the table below: 
+The `PutObject` Amazon S3 actions allows you put an object into a specified S3 bucket. It requires a valid `ENUM_Region` and `Credentials`, as well as a `PutObjectRequest` object and a `FileDocument` object. It returns a Boolean which indicates if the action was successful. The input and output for this service are shown in the table below: 
 
 | Input | Output | 
 | --- | --- | 
-| `PutObjectRequest`, `FileDocument`, `AWS_Region`, `Credentials` | `Boolean` |
+| `PutObjectRequest`, `FileDocument`, `ENUM_Region`, `Credentials` | `Boolean` |
 
 #### 4.3.3 DeleteObject {#deleteobject}
 
-The `DeleteObject` Amazon S3 actions allows you delete an object from a specified S3 bucket. It requires a valid `AWS_Region` and `Credentials`, as well as a `DeleteObjectRequest` object. It returns a Boolean which indicates if the action was successful. The input and output for this service are shown in the table below: 
+The `DeleteObject` Amazon S3 actions allows you delete an object from a specified S3 bucket. It requires a valid `ENUM_Region` and `Credentials`, as well as a `DeleteObjectRequest` object. It returns a Boolean which indicates if the action was successful. The input and output for this service are shown in the table below: 
 
 | Input | Output | 
 | --- | --- | 
-| `DeleteObjectRequest`, `AWS_Region`, `Credentials` | `Boolean` |
+| `DeleteObjectRequest`, `ENUM_Region`, `Credentials` | `Boolean` |
 
 #### 4.3.4 ListBuckets {#listbuckets}
 
-The `ListBuckets` Amazon S3 actions allows you retrieve a list of all buckets in one’s Amazon S3 environment. It requires a valid `AWS_Region` and `Credentials`. It returns a`ListBucketsResponse` object. The input and output for this service are shown in the table below: 
+The `ListBuckets` Amazon S3 actions allows you retrieve a list of all buckets in one’s Amazon S3 environment. It requires a valid `ENUM_Region` and `Credentials`. It returns a`ListBucketsResponse` object. The input and output for this service are shown in the table below: 
 
 | Input | Output | 
 | --- | --- | 
-| `AWS_Region`, `Credentials` | `ListBucketsResponse` |
+| `ENUM_Region`, `Credentials` | `ListBucketsResponse` |
 
 #### 4.3.5 ListObjects {#listobjects}
 
-The `ListObjects` Amazon S3 actions allows you retrieve a list of the metadata of the objects for a specified bucket in one's Amazon S3 environment. It requires a valid `AWS_Region` and `Credentials`, as well as a `ListObjectsRequest` object. It returns a `ListObjectsResponse` object. The input and output for this service are shown in the table below: 
+The `ListObjects` Amazon S3 actions allows you retrieve a list of the metadata of the objects for a specified bucket in one's Amazon S3 environment. It requires a valid `ENUM_Region` and `Credentials`, as well as a `ListObjectsRequest` object. It returns a `ListObjectsResponse` object. The input and output for this service are shown in the table below: 
 
 | Input | Output | 
 | --- | --- | 
-| `ListObjectsRequest`, `AWS_Region`, `Credentials` | `ListObjectsResponse` |
+| `ListObjectsRequest`, `ENUM_Region`, `Credentials` | `ListObjectsResponse` |
 
 #### 4.3.6 DeleteBucket {#deletebucket}
 
-The `DeleteBucket` Amazon S3 actions allows you delete a bucket. It requires a valid `AWS_Region` and `Credentials`, as well as a `DeleteBucketRequest` object. It returns a Boolean which indicates if the action was successful. The input and output for this service are shown in the table below: 
+The `DeleteBucket` Amazon S3 actions allows you delete a bucket. It requires a valid `ENUM_Region` and `Credentials`, as well as a `DeleteBucketRequest` object. It returns a Boolean which indicates if the action was successful. The input and output for this service are shown in the table below: 
 
 | Input | Output | 
 | --- | --- | 
-| `DeleteBucketRequest`, `AWS_Region`, `Credentials` | `Boolean` |
+| `DeleteBucketRequest`, `ENUM_Region`, `Credentials` | `Boolean` |
 
 #### 4.3.7 GetObject {#getObject}
 
-The `GetObject` Amazon S3 actions allows you to get an object from the s3 simple storage service. It requires a valid `AWS_Region` and `Credentials`, as well as a `GetObjectRequest` object. It returns a `GetObjectResponse` object which is a `FileDocument` generalization object. The input and output for this service are shown in the table below: 
+The `GetObject` Amazon S3 actions allows you to get an object from the s3 simple storage service. It requires a valid `ENUM_Region` and `Credentials`, as well as a `GetObjectRequest` object. It returns a `GetObjectResponse` object which is a `FileDocument` generalization object. The input and output for this service are shown in the table below: 
 
 | Input | Output | 
 | --- | --- | 
-| `GetObjectRequest`, `AWS_Region`, `Credentials` | `GetObjectResponse` |
+| `GetObjectRequest`, `ENUM_Region`, `Credentials` | `GetObjectResponse` |
 
 #### 4.3.8 CopyObject {#copyobject}
 
-The `CopyObject` Amazon S3 actions allows you copy an s3 object placed within a bucket or prefix to an other bucket or prefix. It requires a valid `AWS_Region` parameter and `Credentials`, as well as a `CopyObjectRequest` object. It returns a Boolean. The input and output for this service are shown in the table below: 
+The `CopyObject` Amazon S3 actions allows you copy an s3 object placed within a bucket or prefix to an other bucket or prefix. It requires a valid `ENUM_Region` parameter and `Credentials`, as well as a `CopyObjectRequest` object. It returns a Boolean. The input and output for this service are shown in the table below: 
 
 | Input | Output | 
 | --- | --- | 
-| `CopyObjectRequest`, `AWS_Region`, `Credentials` | `Boolean` |
+| `CopyObjectRequest`, `ENUM_Region`, `Credentials` | `Boolean` |
 
 #### 4.3.9 MoveObject {#moveobject}
 
-The `MoveObject` Amazon S3 actions allows you move an s3 object between buckets or prefixes. It requires a valid `AWS_Region` parameter and `Credentials`, as well as a `MoveObjectRequest` object. It returns a Boolean. The input and output for this service are shown in the table below: 
+The `MoveObject` Amazon S3 actions allows you move an s3 object between buckets or prefixes. It requires a valid `ENUM_Region` parameter and `Credentials`, as well as a `MoveObjectRequest` object. It returns a Boolean. The input and output for this service are shown in the table below: 
 
 | Input | Output | 
 | --- | --- | 
-| `MoveObjectRequest`, `AWS_Region`, `Credentials` | `Boolean` |
+| `MoveObjectRequest`, `ENUM_Region`, `Credentials` | `Boolean` |
