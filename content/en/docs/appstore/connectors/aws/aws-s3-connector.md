@@ -143,6 +143,7 @@ The entities in the table below describe all generalizations.
 | Attribute | Description | 
 | --- | --- |
 | `BucketName` | Describes the name of the bucket to create |
+| `LocationConstraint` | Specifies the Region where the bucket will be created. You might choose a Region to optimize latency, minimize costs, or address regulatory requirements. **Important:** This is only supported when using 'US-East-1' as the 'AWS_Region' input parameter of the CreateBucket operation. For other regions, you can only create buckets in that same region. In the AWS 'LocationConstraint' Enumeration, the value 'EU' is a synonym for 'EU-West-1', so it can be ignored and 'EU-West-1' should be used. |
 
 #### 4.1.3 CreateBucketResponse {#createbucketresponse}
 
