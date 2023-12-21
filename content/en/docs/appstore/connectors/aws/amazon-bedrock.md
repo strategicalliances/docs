@@ -22,7 +22,7 @@ Amazon Bedrock is a fully managed service that makes foundation models (FMs) fro
 
 The Amazon Bedrock connector requires Mendix Studio Pro version 9.18.0 or above.
 
-To authenticate with Amazon Web Service (AWS), you must also install and configure the [AWS Authentication connector version 3.0.0 or higher](https://marketplace.mendix.com/link/component/120333). It is crucial for the Amazon Bedrock connector to function correctly. For more information about installing and configuring the AWS Authentication connector, see [AWS Authentication](/appstore/connectors/aws/aws-authentication/).
+To authenticate with Amazon Web Service (AWS), you must also install and configure the [AWS Authentication connector version 2.1.0 or higher](https://marketplace.mendix.com/link/component/120333). If you are using the Amazon Bedrock connector version 2.0 or higher, it requires the AWS Authentication connector version 3.0 or higher. It is crucial for the Amazon Bedrock connector to function correctly. For more information about installing and configuring the AWS Authentication connector, see [AWS Authentication](/appstore/connectors/aws/aws-authentication/).
 
 ### 1.3 Licensing and Cost
 
@@ -75,15 +75,15 @@ After you configure the authentication profile for Amazon Bedrock, you can imple
 6. Double-click the **ListFoundationModels** activity to configure the required parameters.
 7. For the **ENUM_Region** parameter, provide a value by using a variable or an expression. This must be of the type `ENUM_Region` of the AWS Authentication connector.
 8. For the **Credentials** parameter, provide a **Credentials Object** from the AWS Authentication connector:
-    1. In the **App Explorer**, in the **AWSAuthentication** > **Operations** section, find the **Generate Credentials** action.
-    2. Drag the **Generate Credentials** to the beginning of your microflow.
-    3. Double-click the **Generate Credentials** activity to configure the required parameters and provide a value for the AWS Region.
+    1. In the **App Explorer**, in the **AWSAuthentication** > **Operations** section, find the **GetStaticCredentials** or **GetTemporaryCredentials** action.
+    2. Drag the one you need to the beginning of your microflow.
+    3. Double-click the activity to configure the required parameters.
 4. For the **ListFoundationModels** parameter, provide the `ListFoundationModelsRequest` created in step 3.
 9. The `ListFoundationModelsResponse` object is returned by the **ListFoundationModels** activity.    
 10. From the **Toolbox**, drag a **Retrieve** activity to your microflow and place it after the **ListFoundationModels** activity.
 11. Double-click the **Retrieve** activity and make sure **By Association** is selected.
-12. Select the **ModelSummary_ListFoundationModelsResponse** association, which will return a list of the type [`ModelSummary`](#modelsummary).
-13. To further use the response information, you can create an implementation module with copies of the `ListFoundationModelsResponse` and `ModelSummary` Entites. This way, you can use your custom user roles and access rules for those entities and keep them when updating the connector.
+12. Select the **FoundationModelSummary_ListFoundationModelsResponse** association, which will return a list of the type [`FoundationModelSummary`](#foundationmodelsummary).
+13. To further use the response information, you can create an implementation module with copies of the `ListFoundationModelsResponse` and `FoundationModelSummary` entites. This way, you can use your custom user roles and access rules for those entities and keep them when updating the connector.
 
 ## 4 Technical Reference
 
@@ -97,19 +97,27 @@ The domain model is a data model that describes the information in your applicat
 
 This is the request entity of the `ListFoundationModels` action. It is a specialization of the `AbstractRequest` entity of the [AWS Authentication Connector](https://marketplace.mendix.com/link/component/120333)
 
+| Attribute | Description |
+| --- | --- |
+| `ByCustomizationType` | To filter the received foundation models by customization type (enum)|
+| `ByInferenceType` | To filter the received foundation models by inference type (enum)|
+| `ByOutputModality` | To filter the received foundation models by output modality type (enum)|
+| `ProviderName` | To filter the received foundation models by an Amazon Bedrock model provider (string)|
+
 #### 4.1.2 ListFoundationModelsResponse {#listfoundationmodelsresponse}
 
 The `ListFoundationModelsResponse` entity collects (through association) the details needed to invoke all available foundational models that AWS provides in its response. The details per model are stored on the `ModelSummary` entity.
 
-#### 4.1.3 ModelSummary {#modelsummary}
+#### 4.1.3 FoundationModelSummary {#foundationmodelsummary}
 
-The `ModelSummary` entity stores the details (per model) needed to invoke all the available foundational models. 
+The `FoundationModelSummary` entity stores the details (per model) needed to invoke all the available foundational models. 
 
-| Attribute/Association | Description |
+| Attribute | Description |
 | --- | --- |
-| `ModelArn` | The ARN (Amazon Resource Name) that identifies the foundational model (string)|
-| `ModelId` | ID assigned by Amazon Bedrock to their specific foundational models; it is used to invoke the model in question (string)|
-| `ModelSummary_ListFoundationModelsResponse (*-1)` | For collecting the returned foundational models under the `ListFoundationalModelsResponse` (string)|
+| `ModelARN` | The ARN (Amazon Resource Name) that identifies the foundational model (string)|
+| `ModelID` | ID assigned by Amazon Bedrock to their specific foundational models; it is used to invoke the model in question (string)|
+| `ModelName` | The name of the foundational model (string)|
+| `ProviderName` | The provider name of the foundational model (string)|
 
 #### 4.1.4 InvokeModelGenericRequest {#invokemodelgenericrequest}
 
@@ -117,9 +125,8 @@ This is the request entity of the `InvokeModelGeneric` action. It is a specializ
 
 | Attribute | Description |
 | --- | --- |
-| `ModelId` | The `ModelId` attribute describes identifier of the model and is a required parameter.|
-| `SavePrompt` | The `SavePrompt` attribute describes whether to save this prompt in your prompt history. The default value is **false**.|
-| `RequestBody` | The `RequestBody` Attribute describes the JSON request body of the specific model to invoke.|
+| `ModelID` | The `ModelId` attribute describes the identifier of the model.|
+| `RequestBody` | The `RequestBody` attribute describes the JSON request body of the specific model to invoke.|
 
 
 #### 4.1.5 InvokeModelGenericResponse {#invokemodelgenericresponse}
@@ -128,8 +135,6 @@ This is the response entity of the `InvokeModelGeneric` action.
 
 | Attribute | Description |
 | --- | --- |
-| `ContentType` | The `ContentType` attribute describes the MIME type of the inference result.|
-| `ProomptId` | The `PromptId` describes the identifier of the prompt. Only is available for prompts that are saved.|
 | `ResponseBody` | The `ResponseBody` attribute holds the JSON response body of the specific model.|
 
 ### 4.2 Activities {#activities}
@@ -144,7 +149,9 @@ The input and output for this service are shown in the table below:
 
 | Input | Output |
 | --- | --- |
-| `Credentials (object)`, `ENUM_Region (enumeration)`, `ListFoundationModelsRequest (object)` | `ListFoundationModelsResponse (object)`|
+| `ListFoundationModelsRequest (object)` | `ListFoundationModelsResponse (object)`|
+| `Credentials (object)` |  |
+| `ENUM_Region (enumeration)` |  |
 
 #### 4.2.2 Invoke Model Generic {#invoke-model-generic}
 
@@ -154,11 +161,13 @@ The input and output for this service are shown in the table below:
 
 | Input | Output |
 | --- | --- |
-| `AWS_Region (enumeration)`, `Credentials (object)`, `InvokeModelGenericRequest (object)` | `InvokeModelGenericResponse (object)` |
+| `InvokeModelGenericRequest (object)` | `InvokeModelGenericResponse (object)` |
+| `Credentials (object)` |  |
+| `ENUM_Region (enumeration)` |  |
 
 ## 5 Troubleshooting
 
-If you encounter any issues while using the Amazon Bedrock connector, use the following troubleshooting tips to help you solve them.
+If you encounter any issues while using the Amazon Bedrock connector version 2.0 or older, use the following troubleshooting tips to help you solve them.
 
 ### 5.1 Error Code 400 - Bad Request
 
