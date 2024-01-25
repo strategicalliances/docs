@@ -391,7 +391,7 @@ The input and output for this service are shown in the table below:
 
 The `InvokeModel Generic` activity allows you to invoke a model from Amazon Bedrock. This activity provides the generic parts that are equal for the invocation of every model. It requires `ENUM_Region`, `Credentials` and `InvokeModelGenericRequest` as input parameters.
 
-The `InvokeModel Generic` operation provides a versatile interface for integrating with Amazon Bedrock models. Each available model in Amazon Bedrock has its own set of model-specific parameters required to be passed into the `InvokeModelRequest`. The [Amazon Bedrock example implementation](https://marketplace.mendix.com/link/component/215751) available on the Mendix Marketplace provides a reference implementation of how to configure the model-specific parameters into the generic `InvokeModel Generic` operation.
+The `InvokeModel Generic` operation provides a versatile interface for integrating with Amazon Bedrock models. Each available model in Amazon Bedrock has its own set of model-specific parameters required to be passed into the `InvokeModelRequest`. The Amazon Bedrock Connector contains two example implementations to showcase how to use the `InvokeModel Generic` operation to invoke specific moedels. The [Amazon Bedrock example implementation](https://marketplace.mendix.com/link/component/215751) available on the Mendix Marketplace provides a reference implementation of how to configure the model-specific parameters into the generic `InvokeModel Generic` operation.
 
 The input and output for this service are shown in the table below:
 
@@ -425,7 +425,7 @@ The input and output for this service are shown in the table below:
 
 #### 4.2.5 Start Ingestion Job {#start-ingestion-job}
 
-The `Start Ingestion Job` activity allows you to begin an ingestion job, in which a data source is added to a knowledge base. It requires `ENUM_Region`, `Credentials` and `StartIngestionJobRequest` as input parameters.
+The `Start Ingestion Job` activity allows you to begin an ingestion job, in which the contents of the data source S3 bucket is preprocessed and synced with the vector database of the knowledge base. It requires `ENUM_Region`, `Credentials` and `StartIngestionJobRequest` as input parameters.
 
 To use this activity it is required to setup a knowledge base in your Amazon Bedrock Environment. For more information about knowledge bases, please refer to the [Knowledge Base for Amazon Bedrock Documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html).
 
@@ -437,7 +437,7 @@ The input and output for this service are shown in the table below:
 
 #### 4.2.6 Get Ingestion Job {#get-ingestion-job}
 
-The `Get Ingestion Job` activity allows you to retrieve information about a ingestion job, in which a data source is added to a knowledge base. It requires `ENUM_Region`, `Credentials` and `GetIngestionJobRequest` as input parameters.
+The `Get Ingestion Job` activity allows you to retrieve information about a ingestion job, in which the contents of the data source S3 bucket is preprocessed and synced with the vector database of the knowledge base. It requires `ENUM_Region`, `Credentials` and `GetIngestionJobRequest` as input parameters.
 
 To use this activity it is required to setup a knowledge base in your Amazon Bedrock Environment. For more information about knowledge bases, please refer to the [Knowledge Base for Amazon Bedrock Documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html).
 
