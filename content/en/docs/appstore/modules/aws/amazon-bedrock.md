@@ -922,7 +922,7 @@ The platform-supported [Pusher Module](https://marketplace.mendix.com/link/compo
 
 Without action groups, the agent will still access associated knowledge bases, but will not be able to perform tasks that make agents an extension of simply invoking a model. Action groups are what make agents so powerful.
 
-For example, it might be beneficial for the agent to dynamically retrieve more information via a REST endpoint or other source, rather than storing all possible information in a knowledge base. To achieve this, a lambda function must first be specified for the REST request and then associated with the agent as part of an action group. If you want to add context to your request and access it in your lambda function, you can consider using the SessionAttribute entity for this.
+For example, it might be beneficial for the agent to dynamically retrieve more information via a REST endpoint or other source, rather than storing all possible information in a knowledge base. To achieve this, a lambda function must first be specified for the REST request and then associated with the agent as part of an action group. If you want to add context to your request and access it in your lambda function, you can consider using the SessionAttribute entity for this. The PromptSessionAttributes correspond to the placeholders in the [Prompt Templates] (https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts-configure.html) and are therefore suitable for adding information to them.
 
 If you would like to add lambda functions to your agent, please refer to the [AWS documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-lambda.html).
 
