@@ -61,7 +61,7 @@ Configure each data ingestion job by specifying the endpoint, authentication det
 ### 4.1 Current Limitations
 
 1. At present the Mendix Data Loader supports username and password authentication so please make sure to use this setting when setting up your Odata service.
-2. We don't yet support associations (they are not handled using explicit foreign key columns yet).
+2. The recommended way (by Mendix) of exposing an association in an Odata service is as a link. This is not supported yet by the Mendix Data Loader. Please choose the "As an associated object id" option in your Odata settings. This option will store the associated object id in the table, but not explicitly as foreign key. 
 
 ### 4.2 Troubleshooting
 
