@@ -53,7 +53,7 @@ Configure each data ingestion job by specifying the endpoint, authentication det
 
 ### 3.3 Executing and Monitoring Ingestion
 
-1. **Ingest Data**: After setting up, use the `Ingest Data` button to start the data transfer. All ingested data will be stored in [transient tables](https://docs.snowflake.com/en/user-guide/tables-temp-transient#transient-tables).
+1. **Ingest Data**: After setting up, use the `Ingest Data` button to start the data transfer. All data exposed by the Odata service will be ingested and all ingested data will be stored in [transient tables](https://docs.snowflake.com/en/user-guide/tables-temp-transient#transient-tables).
 2. **View Results**: Check the job ID and verify the data in the specified target database.
 
 ## 4 Technical Reference
