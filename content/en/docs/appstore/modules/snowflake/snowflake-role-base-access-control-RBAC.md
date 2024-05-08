@@ -40,4 +40,10 @@ Remember, implementing RBAC is essential for maintaining security and managing a
 * To fill in the connection details (such as Snowflake credentials), test the connection and/or generate a JWT Token (if applicable), the ConnectionDetails_NewEdit_Step1 and Step2 pages can be used.
 * Read the documentation about the Snowflake REST SQL Connector to find out more about how to set up the Key-Pair authentication.
 
-### 2.5 
+## 3 Execute Statement Action
+
+To interact with Snowflake, SQL queries need to be executed.
+
+To execute the SQL Statement the Execute Create a microflow or Nanoflow that performs the following steps:
+
+* In the microflow create an object Statement so that SQL statement can be executed.
