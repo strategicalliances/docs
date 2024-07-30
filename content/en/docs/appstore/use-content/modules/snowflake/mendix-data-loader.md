@@ -152,7 +152,7 @@ A bug in the published OData service resource in Mendix Studio Pro 10.10 where t
 
 ##### 5.2.1.2 Solution
 
-This issue will be resolved in a future Mendix Studio Pro release. If you wish to work around this issue, you can set the ApplicationRootUrl of the application so that it has a trailing slash "/", e.g., **https://mymendixapp.mendixcloud.com/**. This resolution is the same as setting a custom domain as described in the [Custom Domains Mendix Documentation](https://docs.mendix.com/developerportal/deploy/custom-domains/#use-custom-url).
+This issue is resolved in Mendix version 10.12.0 and up. If you wish to work around this issue, you can set the ApplicationRootUrl of the application so that it has a trailing slash "/", e.g., **https://mymendixapp.mendixcloud.com/**. This resolution is the same as setting a custom domain as described in the [Custom Domains Mendix Documentation](https://docs.mendix.com/developerportal/deploy/custom-domains/#use-custom-url).
 
 ### 5.3 Contact Information
 
