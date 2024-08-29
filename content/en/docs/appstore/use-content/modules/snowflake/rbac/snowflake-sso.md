@@ -10,7 +10,7 @@ weight: 20
 
 You can use Snowflake's [SSO capabilities](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-overview) to enable your Mendix app to use role-based access control (RBAC) automatically. 
 
-The following diagram is a visual representation of how the Snowflake SSO can be used with a Mendix application with the help of the an external OAUTH provider. 
+The following diagram is a visual representation of how the Snowflake SSO can be used with a Mendix application with the help of an external OAUTH provider. 
 
  {{< figure src="/attachments/appstore/use-content/modules/snowflake-sso/RBAC-SSO-explanations.png" >}}
 
@@ -125,29 +125,30 @@ To configure Snowflake SSO for your app, perform the following steps:
 To configure your Mendix application, perform the following steps:
 
 1. Ensure that you have installed and configured the [OIDC SSO module](/appstore/modules/oidc/).
-2. Log in to your Mendix app as administrator. 
-3. To add a new OpenID provider for Azure, access the OpenID setup page, add a new client configuration, and give it an **Alias** so you can identify it if you have more than one client configuration.
-4. Add the **Client ID**. You can find it in Azure as the **Application (Client) ID**:
+2. Include the `OIDC.GetCurrentToken` flow wherever a token is to be generated and then used during the call to execute the statement. If you have been using key pair authentication, this means that you need to replace the `SnowflakeRESTSQL.ConnectionDetails_GenerateToken_JWT` with `OIDC.GetCurrentToken`.
+3. Log in to your Mendix app as administrator. 
+4. To add a new OpenID provider for Azure, access the OpenID setup page, add a new client configuration, and give it an **Alias** so you can identify it if you have more than one client configuration.
+5. Add the **Client ID**. You can find it in Azure as the **Application (Client) ID**:
 
     {{< figure src="/attachments/appstore/use-content/modules/snowflake-sso/azure-client-id.png" >}}
 
-5. Select the **Client_secret_basic** as the **Client authentication method** and add the secret value.
-6. Enter `https://login.microsoftonline.com/<yourTenantID>/v2.0/.well-known/openid-configuration` as the **Automatic Configuration URL**.
-7. Click **Import configuration**.
+6. Select the **Client_secret_basic** as the **Client authentication method** and add the secret value.
+7. Enter `https://login.microsoftonline.com/<yourTenantID>/v2.0/.well-known/openid-configuration` as the **Automatic Configuration URL**.
+8. Click **Import configuration**.
 
     {{< figure src="/attachments/appstore/use-content/modules/snowflake-sso/import-config.png" >}}
 
-8. Save the configuration.
-9. For the **scope**, select **openid**, **profile**, **email**, **offline_access**, and scope that you defined in Azure Entra ID.  
+9. Save the configuration.
+10. For the **scope**, select **openid**, **profile**, **email**, **offline_access**, and scope that you defined in Azure Entra ID.  
 
     {{< figure src="/attachments/appstore/use-content/modules/snowflake-sso/scope.png" >}}
 
-10. For **UserParsing**, select the default method.
+11. For **UserParsing**, select the default method.
 
     {{< figure src="/attachments/appstore/use-content/modules/snowflake-sso/parsing.png" >}}
 
-11. Configure the **UserProvisioning** tab as shown in the following figure:
+12. Configure the **UserProvisioning** tab as shown in the following figure:
 
     {{< figure src="/attachments/appstore/use-content/modules/snowflake-sso/provisioning.png" >}}
 
-12. Run the application and log in with the user that you use in Snowflake and Azure.
+13. Run the application and log in with the user that you use in Snowflake and Azure. When you now call the Snowflake REST SQL API, the scopes defined for your default role will be applied.
