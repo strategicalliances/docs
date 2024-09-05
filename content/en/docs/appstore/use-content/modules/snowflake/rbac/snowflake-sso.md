@@ -40,7 +40,7 @@ Firstly, create a resource application in Azure Entra ID. The resource applicati
 
     {{< figure src="/attachments/appstore/use-content/modules/snowflake-sso/app-add-scope.png" >}}
 
-8. In the **Scope name** field, enter *session:scope:AnyRole*.
+8. In the **Scope name** field, enter *SESSION:ROLE-ANY*.
 
     {{< figure src="/attachments/appstore/use-content/modules/snowflake-sso/azure-entra-id-scope.png" >}}
 
