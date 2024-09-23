@@ -49,6 +49,8 @@ In order to use the Amazon S3 service, you must authenticate with AWS. To do so,
 
 As of version 3.0.0 of the [AWS Authentication Connector](https://marketplace.mendix.com/link/component/120333), all the resources and logic required to set up authentication are centralized inside the AWS Authentication Connector module. 
 
+The latest version of the Amazon S3 connector requires AWS Authentication Connector version 3.2.0 or higher.
+
 The AWS Authentication Connector supports both **static credentials** and **temporary credentials**. For more information and detailed instructions please refer to the [AWS Authentication Connector documentation page](/appstore/modules/aws/aws-authentication/).
 
 ### Configuring a Microflow for an AWS Service
