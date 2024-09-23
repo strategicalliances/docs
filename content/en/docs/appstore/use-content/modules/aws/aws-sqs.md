@@ -18,9 +18,11 @@ Amazon SQS helps improve your app by providing a queue service to send messages 
 
 ### Prerequisites {#prerequisites}
 
-The Amazon SQS connector requires Mendix Studio Pro 9.18.0 or above.
+The Amazon SQS connector requires at least Mendix Studio Pro 9.18.0 or above.
 
-To authenticate with Amazon Web Service (AWS), you must also install and configure the [AWS authentication connector](https://marketplace.mendix.com/link/component/120333). If you are using the Amazon SQS connector version 2.0 or higher, it requires the AWS Authentication connector version 3.0 or higher. For more information about installing and configuring the AWS Authentication connector, see [AWS Authentication](/appstore/modules/aws/aws-authentication/). 
+To authenticate with Amazon Web Service (AWS), you must also install and configure the [AWS authentication connector](https://marketplace.mendix.com/link/component/120333). If you are using the Amazon SQS connector version 2.0, it requires the AWS Authentication connector version 3.0 or higher. For more information about installing and configuring the AWS Authentication connector, see [AWS Authentication](/appstore/modules/aws/aws-authentication/). 
+
+The latest version of the Amazon SQS Connector requires Mendix Studio Pro version 9.24.2 or higher and the AWS Authentication connector version 3.2.0. or higher.
 
 {{% alert color="info" %}}
 Ensure that the AWS user account used for authentication has the appropriate permissions to access the SQS service in AWS.
@@ -38,7 +40,9 @@ After you install the connector, you can find it in the **App Explorer**, in the
 
 In order to use the Amazon SQS service, you must authenticate with AWS. To do so, you must set up a configuration profile in your Mendix app. After you set up the configuration profile, the connector module handles the authentication internally.
 
-As of version 3.0.0 of the [AWS Authentication Connector](https://marketplace.mendix.com/link/component/120333), all the resources and logic required to set up authentication are centralized inside the AWS Authentication Connector module. 
+As of version 3.0.0 of the [AWS Authentication Connector](https://marketplace.mendix.com/link/component/120333), all the resources and logic required to set up authentication are centralized inside the AWS Authentication Connector module.
+
+The latest version of the Amazon SQS Connector requires the AWS Authentication connector version 3.2.0. or higher.
 
 The AWS Authentication Connector supports both **static credentials** and **temporary credentials**. For more information and detailed instructions please refer to the [AWS Authentication Connector documentation page](/appstore/modules/aws/aws-authentication/).
 
