@@ -22,7 +22,7 @@ Amazon Location Service is a location-based service that developers can use to a
 
 The Amazon Location Service connector requires at least Mendix Studio Pro version 9.18.0 or above. To authenticate with Amazon Web Service (AWS), you must also install and configure the [AWS Authentication connector version 3.0.0 or higher](https://marketplace.mendix.com/link/component/120333). It is crucial for the Amazon Location Service connector to function correctly. 
 
-If you would like to use the newest version of the Amazon Location Service connector, your project would need to be in Mendix Studio Pro version 9.24.2 or above and the AWS Authentication connector version 3.2.0 or higher would need be configured. 
+If you would like to use the newest version of the Amazon Location Service connector, your project would need to be in Mendix Studio Pro version 9.24.2 or above and the AWS Authentication connector version 3.2.0 or higher would need to be configured. 
 
 For more information about installing and configuring the AWS Authentication connector, see [AWS Authentication](/appstore/modules/aws/aws-authentication/).
 
