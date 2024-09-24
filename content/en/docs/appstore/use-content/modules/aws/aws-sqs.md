@@ -18,11 +18,7 @@ Amazon SQS helps improve your app by providing a queue service to send messages 
 
 ### Prerequisites {#prerequisites}
 
-The Amazon SQS connector requires at least Mendix Studio Pro 9.18.0 or above.
-
-To authenticate with Amazon Web Service (AWS), you must also install and configure the [AWS authentication connector](https://marketplace.mendix.com/link/component/120333). If you are using the Amazon SQS connector version 2.0, it requires the AWS Authentication connector version 3.0 or higher. For more information about installing and configuring the AWS Authentication connector, see [AWS Authentication](/appstore/modules/aws/aws-authentication/). 
-
-The latest version of the Amazon SQS Connector requires Mendix Studio Pro version 9.24.2 or higher and the AWS Authentication connector version 3.2.0. or higher.
+The latest versionof the Amazon SQS connector requires Mendix Studio Pro 9.24.2 or above. To authenticate with Amazon Web Service (AWS), you must also install and configure the [AWS authentication connector](https://marketplace.mendix.com/link/component/120333) version 3.2.0. or higher.
 
 {{% alert color="info" %}}
 Ensure that the AWS user account used for authentication has the appropriate permissions to access the SQS service in AWS.
