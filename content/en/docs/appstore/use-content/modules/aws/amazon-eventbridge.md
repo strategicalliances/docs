@@ -22,11 +22,11 @@ Amazon EventBridge is a serverless service that uses events to connect applicati
 
 ### Prerequisites {#prerequisites}
 
-The Amazon EventBridge connector requires Mendix Studio Pro 9.18.0 or above.
+The Amazon EventBridge connector requires Mendix Studio Pro 9.24.2 or above.
 
 To use the Amazon EventBridge connector, you must also install and configure the following modules:
 
-* [AWS Authentication connector version 3.0.0 or higher](https://marketplace.mendix.com/link/component/120333) - This connector is required to authenticate with Amazon Web Services (AWS). It is crucial for the Amazon EventBridge connector to function correctly. For more information about installing and configuring the AWS Authentication connector, see [AWS Authentication](/appstore/modules/aws/aws-authentication/).
+* [AWS Authentication connector version 3.2.0 or higher](https://marketplace.mendix.com/link/component/120333) - This connector is required to authenticate with Amazon Web Services (AWS). It is crucial for the Amazon EventBridge connector to function correctly. For more information about installing and configuring the AWS Authentication connector, see [AWS Authentication](/appstore/modules/aws/aws-authentication/).
 * [Community Commons module](https://marketplace.mendix.com/link/component/170) - This module is a required dependency for the Amazon EventBridge connector.
 
 ### Licensing and Cost
