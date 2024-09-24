@@ -19,9 +19,7 @@ Amazon Simple Notification Service (SNS) can send app-to-app (A2A) and app-to-pe
  
 ### Prerequisites {#prerequisites}
  
-The Amazon SNS connector requires Mendix Studio Pro 9.24.2 or above.
- 
-To authenticate with Amazon Web Service (AWS), you must also install and configure version 3.2.0 or higher of the [AWS authentication connector](https://marketplace.mendix.com/link/component/120333). For more information about installing and configuring the AWS Authentication connector, see [AWS Authentication](/appstore/modules/aws/aws-authentication/).
+The Amazon SNS connector requires Mendix Studio Pro 9.24.2 or above. To authenticate with Amazon Web Service (AWS), you must also install and configure the [AWS Authentication Connector version 3.2.0 or higher](https://marketplace.mendix.com/link/component/120333). For more information about installing and configuring the AWS Authentication connector, see [AWS Authentication](/appstore/modules/aws/aws-authentication/).
  
 {{% alert color="info" %}}
 Ensure that the AWS user account used for authentication has the appropriate permissions to access the SNS service in AWS.
