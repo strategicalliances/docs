@@ -23,7 +23,7 @@ The latest version of the Amazon DynamoDB connector requires at least Mendix Stu
 
 To use the Amazon DynamoDB connector, you must also install and configure the following modules:
 
-* [AWS Authentication connector version 3.2.0 or higher](https://marketplace.mendix.com/link/component/120333) - This connector is required to authenticate with Amazon Web Services (AWS). It is crucial for the Amazon DynamoDB connector to function correctly. If you are using the Amazon DynamoDB connector version 3.0 or higher, it requires the AWS Authentication connector version 3.2.0 or higher. It is crucial for the Amazon S3 connector to function correctly. For more information about installing and configuring the AWS Authentication connector, see [AWS Authentication](/appstore/modules/aws/aws-authentication/).
+* [AWS Authentication connector version 3.2.0 or higher](https://marketplace.mendix.com/link/component/120333) - This connector is required to authenticate with Amazon Web Services (AWS). It is crucial for the Amazon DynamoDB connector to function correctly. If you are using the Amazon DynamoDB connector version 2.1.0 or higher, it requires the AWS Authentication connector version 3.2.0 or higher. It is crucial for the Amazon S3 connector to function correctly. For more information about installing and configuring the AWS Authentication connector, see [AWS Authentication](/appstore/modules/aws/aws-authentication/).
 * [Community Commons module](https://marketplace.mendix.com/link/component/170) - This module is required to parse the `creationDateTime` attribute as returned by the `DescribeTable` activity.
 
 ### Licensing and Cost
