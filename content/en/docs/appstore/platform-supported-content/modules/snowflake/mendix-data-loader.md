@@ -200,6 +200,18 @@ A bug in the published OData service resource in Mendix Studio Pro 10.10 where t
 
 This issue will be resolved in a future Mendix Studio Pro release. If you wish to work around this issue, you can set the ApplicationRootUrl of the application so that it has a trailing slash "/", e.g., **https://mymendixapp.mendixcloud.com/**. This resolution is the same as setting a custom domain as described in the [Custom Domains Mendix Documentation](/developerportal/deploy/custom-domains/#use-custom-url).
 
+### Error Using Delta Ingestion: Could not map 'changedDate' to attribute or association.
+
+When ingesting data using the **Use Delta Ingestion** setting while the **changedDate** system member isn't properly exposed you will be presented with an error (while doing second ingestion for the data source). In the stacktrace you will see error code 400 with the message "Could not map 'changedDate' to attribute or association.".
+
+#### Cause 
+
+The **ChangedDate** system member on the exposed entity isn't enabled or is not exposed in the OData endpoint.
+
+#### Solution
+
+Enable the **changedDate** system member on the exposed entity and expose it on the published OData resource.
+
 ## Contact Information
 
 For support or queries regarding the Mendix Data Loader, email the development team at [SA_Dev_Team@mendix.com](mailto:sa_dev_team@mendix.com).
