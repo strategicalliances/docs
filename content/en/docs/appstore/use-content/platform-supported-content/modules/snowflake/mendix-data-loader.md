@@ -142,6 +142,7 @@ CALL MENDIX_DATA_LOADER.MX_FUNCTIONS.RUN_INGESTION_JOB('40FJYP9D','');
 ## Setting Up Mail Notification on Failed Task Execution
 
 Snowflake provides build in alert/notification functionality. This "ALERT" object holds a condition that you can specify and use to check if tasks have failed and send notifications based on your conditional expression. To use this you need to create a ["NOTIFICATION INTEGRATION"](https://docs.snowflake.com/en/sql-reference/sql/create-notification-integration-email) and ["ALERT"]() using the NOTIFICATION INTEGRATION and system function ["SYSTEM$SEND_EMAIL"](https://docs.snowflake.com/en/sql-reference/stored-procedures/system_send_email).
+For other options using external integrations for sending all sorts of notifications you can check out this [blog post](https://medium.com/snowflake/introduction-to-snowflakes-data-pipeline-alerts-notifications-9beac8d127cc).
 
 ### SQL to Setup Mail Notification
 
