@@ -152,4 +152,15 @@ To configure your Mendix application, perform the following steps:
 11. Configure the **UserProvisioning** tab as shown in the following figure:
 
     {{< figure src="/attachments/appstore/platform-supported-content/modules/snowflake-sso/provisioning.png" >}}
-12. Run the application and log in with the user that you use in Snowflake and Azure. 
+11. Configure the **UserProvisioning** tab as shown in the following figure:
+
+    {{< figure src="/attachments/appstore/platform-supported-content/modules/snowflake-sso/provisioning.png" >}}
+    
+12. Go to *Snowflake Configuration* page.
+13. Create a new configuration
+14. Select *OAUTH* as an **Authentication type**
+15. Fill in the mandatory information as appears below
+
+     {{< figure src="/attachments/appstore/platform-supported-content/modules/snowflake-sso/OAUTHSettings.png" >}}
+    
+16. Logout and log in with the user that you use in Snowflake and Azure. 
