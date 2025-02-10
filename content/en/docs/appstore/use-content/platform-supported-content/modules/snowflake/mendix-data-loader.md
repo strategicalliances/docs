@@ -146,7 +146,7 @@ For other options using external integrations for sending all sorts of notificat
 
 ### SQL to Setup Mail Notification
 
-The following is an template you can use after filling in the specifics:
+The following is a template you can execute in a worksheet after filling in the specifics:
 
 ```sql
 CREATE DATABASE IF NOT EXISTS <db name>;
