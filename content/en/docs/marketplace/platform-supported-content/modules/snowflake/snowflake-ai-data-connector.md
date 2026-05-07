@@ -327,8 +327,8 @@ To configure your Mendix app for Snowflake Cortex Analyst, perform the following
 2. Configure authentication based on the authentication type set in **ConnectionDetails**:
    * When using **KEYPAIR_JWT**, use the **Generate JWT** action from the **Toolbox** to generate a JWT token.
    * When using **OAuth** or **PAT**, use the **BearerToken_GetCreate** microflow from the **Utils** folder to get or create a **BearerToken** object. Set the **Token** and **ExpirationDate** attributes accordingly.
-3. Add the **Cortex Analyst: Create Request** action from the **Toolbox**, and configure the **Request**.
-   The request is based on the **AbstractCortexAnalystRequest** entity, which has two implementations depending on whether you want to use a single semantic model or multiple models:
+3. Create the **CortexAnalystRequest** or **CortexAnalystMultiModelRequest** object.
+   These request objects are a specialization on the **AbstractCortexAnalystRequest** entity, which has two implementations depending on whether you want to use a single semantic model or multiple models:
 
    * **CortexAnalystRequest** – Use this for single-model requests. Configure one of the following attributes:
      * **Semantic_Model_File** – Provide the path to a semantic model YAML file stored in Snowflake.
@@ -340,14 +340,21 @@ To configure your Mendix app for Snowflake Cortex Analyst, perform the following
      * **Semantic_View** – Provide the name of the semantic model view that Cortex Analyst should use. For more information, refer to the [Using Semantic Model Views](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst#understanding-semantic-views) section of the Snowflake documentation.
      * **Inline_Semantic_Model** – Provide the semantic model definition as a YAML string. This allows you to define the semantic model inline instead of uploading it to Snowflake.
    The user prompt is stored in the **CortexAnalystMessage** object. Set the question for Cortex Analyst in the **Content** attribute of this entity.
-4. Add the **Snowflake Cortex Analyst** action from the Toolbox and provide the following information:
+4. Create a **CortexAnalystMessage** objects and set the **Role** to "User". Associate the object to the **CortexAnalystRequest** or **CortexAnalystMultiModelRequest** request object you have created in the prefious step.
+5. Create a **Content** object and set the **ContentType** to "Text". On the **Text** attribute you set your natural language question for which Cortex Analyst will return a response. Associate the Content object to the CortexAnalystMessage created in the prefious step.
+6. Add the **Snowflake Cortex Analyst** action from the Toolbox and provide the following information:
     * **ConnectionDetails** – The connection details that you configured
     * **Request** – The request that you configured for the **Cortex Analyst: Create Request** action
-5. To get the response message from the response, add the **Response: Get Cortex Analyst Response Message** action from the Toolbox, and then add the **Response** entity as a parameter. The message contains the following information:
+  It will return a **CortexAnalystResponse** object.
+7. To get the contents from the response retrieve the associated **CortexAnalystMessage** and from that retrieve the list of **Content** objects. 
+
+Will continue here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
     * **Content** – This is the content of the response message. It includes the text and the SQL, or the suggestions if no SQL is returned
     * **Cortex Role** – The entity that produced the message; possible values are *user* or *analyst*
     * **SQLText** – The returned SQL suggestion
-6. To get the Cortex Analyst Response entity, add the **Response: Get Cortex Analyst Response** action from the Toolbox, and then add the **Response** entity as a parameter. The response contains the following information:
+8. To get the Cortex Analyst Response entity, add the **Response: Get Cortex Analyst Response** action from the Toolbox, and then add the **Response** entity as a parameter. The response contains the following information:
     * **Request_ID** – The returned *RequestId*
 
 ## Configuring Snowflake Cortex Search {#cortex-search}
