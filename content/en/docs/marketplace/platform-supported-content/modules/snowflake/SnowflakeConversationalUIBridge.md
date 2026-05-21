@@ -22,11 +22,11 @@ When using the Snowflake AI Data Connector and want to implement Conversational 
 * Functionality: Easily implement chat interfaces for Cortex Analyst using Conversational UI:
 
     * Test page "SnowflakeConfig_TestingPage" for the different chat interfaces provided by conversational UI. Acts a a quick testing page and an Example of how one could set up a chat interface for Cortex Analyst using ConversationalUI. Simply add the page to your project navigation and start exploring.
-    * EchoDeployedModel overview page "EchoDeployedModel_Overview". Used to configure your Contex Analyst implementations by creating EchoDeployedModels. Needs SnowflakeAIDataConnector.ConnectionDetails object.
+    * CortexAnalystDeployedModel overview page "CortexAnalystDeployedModel_Overview". Used to configure your Contex Analyst implementations by creating CortexAnalystDeployedModels. Needs SnowflakeAIDataConnector.ConnectionDetails object.
     * Snippet for ChatHistory bar 'Snippet_ChatContext_ChatHistoryBar'. Needs ConversationalUI.ChatContext object.
     * Snippet for Cortex Analyst Model configuration page 'Snippet_ModelConfig'. Needs ConversationalUI.ChatContext object.
     * Example page "FullScreenChat_HistoryAndProviderSelection" for full screen chat with history bar and provider selection.
-    * Action Microflow: 'ChatCompletions_CallLLM' for the "EchoDeployedModel" which is set in 'EchoDeployedModel_Create'. Handels calls to Cortex Analyst and maps GenAICommons request to Cortex Analyst request and Cortex Analyst response to GenAICommons response.
+    * Action Microflow: 'ChatCompletions_CallLLM' for the "CortexAnalystDeployedModel" which is set in 'CortexAnalystDeployedModel_Create'. Handels calls to Cortex Analyst and maps GenAICommons request to Cortex Analyst request and Cortex Analyst response to GenAICommons response.
     * Action Microflow: 'ChatContext_ChatWithHistory_ActionMicroflow' for the "SnowflakeConversationalUIConfig" which is set in 'SnowflakeConversationalUIConfig_GetCreate'. Does some pre and post processing creating Conversational UI Messages, References, etc.
 
 
